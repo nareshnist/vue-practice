@@ -15,7 +15,7 @@ import { ref } from 'vue'
 // Simulating API calls
 
 const fetchUser = () => {
-    return new Promise((reslove) => {
+    return new Promise((reslove,reject) => {
         setTimeout(() => {
             reslove({ id: 1, name: "naresh jupalle", email: "naresh.jupalle410@gmail.com" });
         }, 1000);
@@ -31,8 +31,16 @@ const fetchPosts = (userId) => new Promise(resolve =>
 
 // Async setup
 
-console.log(await fetchUser())
-console.log(await fetchPosts())
-const user = ref(await fetchUser())
-const posts = ref(await fetchPosts(user.value.id))
+// console.log(await fetchUser())
+// console.log(await fetchPosts())
+const user = ref(null);
+const posts = ref(null)
+try {
+    user.value = await fetchUser()
+   posts.value = await fetchPosts(user.value.id)
+}catch(e) {
+    console.log("an error occured")
+    console.log(e);
+}
+
 </script>

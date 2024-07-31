@@ -1,6 +1,7 @@
 <template>
 
-<Suspense>
+<!-- @error-captured="handleError" -->
+<Suspense >
 <template #default>
     <user-dashboard></user-dashboard>
 </template>
@@ -14,4 +15,22 @@
   
   <script setup>
   import UserDashboard from './UserDashboard.vue';
+import { onErrorCaptured } from 'vue';
+
+
+// one way of doing 
+// onErrorCaptured((error) => {
+//   debugger;
+//   console.log(error);
+// })
+
+// second listening event on suspense tag.
+
+// function handleError(error) {
+//   debugger
+//   console.log(error)
+// }
+
+
+
   </script>

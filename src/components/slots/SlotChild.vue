@@ -1,10 +1,6 @@
 <template>
   <div class="container">
     <BaseCardVue>
-      
-
-
-
         <template #[slotName]>
           <h1>card content</h1>
           <h2>{{ username }}</h2>
